@@ -84,4 +84,4 @@ def classifyPerson():
     classfierResult = classify0((inArr
         - minVals) / ranges, normMat, datingLabels, 3)
     print("You will probably like this person: ",
-        resultList[classfierResult[-1]])
+        resultList[classfierResult - 1])
