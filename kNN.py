@@ -1,5 +1,6 @@
 from numpy import *
 import operator
+from os import listdir
 
 def createDataSet():
     group = array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])
@@ -97,7 +98,7 @@ def handwritingClassTest():
     hwLabels = []
     trainingFileList = listdir('trainingDigits')
     m = len(trainingFileList)
-    trainingMat = zeros(m,1024)
+    trainingMat = zeros((m,1024))
     for i in range(m):
         fileNameStr = trainingFileList[i]
         fileStr = fileNameStr.split('.')[0]
@@ -117,4 +118,4 @@ def handwritingClassTest():
             % (classfierResult, classNumStr))
         if (classfierResult != classNumStr): errorCount += 1.0
     print("the total number of errors is: %d" % errorCount)
-    print("the total error rate is: %d" % errorCount/float(mTest))
+    print("the total error rate is: %f" % (errorCount/float(mTest)))
