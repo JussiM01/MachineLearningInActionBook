@@ -95,7 +95,7 @@ def img2vector(filename):
 
 def handwritingClassTest():
     hwLabels = []
-    trainingFileList = listDir('trainingDigits')
+    trainingFileList = listdir('trainingDigits')
     m = len(trainingFileList)
     trainingMat = zeros(m,1024)
     for i in range(m):
@@ -104,7 +104,7 @@ def handwritingClassTest():
         classNumStr = int(fileStr.split('_')[0])
         hwLabels.append(classNumStr)
         trainingMat[i,:] = img2vector('trainingDigits/%s' % fileNameStr)
-    testFilelist = listDir('testDigits')
+    testFilelist = listdir('testDigits')
     errorCount = 0.0
     mTest = len(testFilelist)
     for i in range(mTest):
