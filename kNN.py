@@ -8,10 +8,11 @@ def createDataSet():
 
 def classify0(inX, dataSet, labels, k):
     dataSetSize = dataSet.shape[0]
-    diffMat = title(inX, (dataSetSize,1)) - dataSet
+    diffMat = tile(inX, (dataSetSize,1)) - dataSet
     sqDiffMat = diffMat**2
-    sqDistances = sqDistances**0.5
-    sortedDistIndecies = distancies.argsort()
+    sqDistances = sqDiffMat.sum(axis=1)
+    distances = sqDistances**0.5
+    sortedDistIndecies = distances.argsort()
     classCount={}
     for i in range(k):
         voteIlabel = labels[sortedDistIndecies[i]]
