@@ -64,9 +64,10 @@ def datingClassTest():
     numTestVecs = int(m*hoRatio)
     errorCount = 0.0
     for i in range(numTestVecs):
-        classfierResult = classify0(normMat[i,:], normMat[numTestVecs:m,:]), \
-                        datingLabels[numTestVecs:m, 3])
+        classfierResult = classify0(normMat[i,:], normMat[numTestVecs:m,:], \
+                        datingLabels[numTestVecs:m], 3)
         print("the classifier came back with: %s the real answer is: %s"\
                         % (classfierResult, datingLabels[i]))
-        if (classfierResult != datingLabels[i]): errorCount += 1.0
+        if (classfierResult != datingLabels[i]):
+            errorCount += 1.0
     print("the total error rate is: %f" % (errorCount/float(numTestVecs)))
