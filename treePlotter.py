@@ -85,7 +85,7 @@ def plotTree(myTree, parentPt, nodeTxt):
     secondDict = myTree[firstStr]
     plotTree.yOff = plotTree.yOff - 1.0/plotTree.totalD
     for key in secondDict.keys():
-        if type(secondDict[key])._name__=='dict':
+        if type(secondDict[key]).__name__=='dict':
             plotTree(secondDict[key], cntrPt, str(key))
         else:
             plotTree.xOff = plotTree.xOff + 1.0/plotTree.totalW
@@ -104,4 +104,3 @@ def createPlot(inTree):
     plotTree.xOff = -0.5/plotTree.totalW; plotTree.yOff = 1.0
     plotTree(inTree, (0,5,1.0), '')
     plt.show()
-    
