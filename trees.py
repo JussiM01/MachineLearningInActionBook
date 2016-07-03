@@ -22,4 +22,13 @@ def createDataSet():
             [0,1,'no']]
     labels = ['no surfacing','slippers']
     return dataSet, labels
+
+def splitDataSet(dataSet, axis, value):
+    retDataset = []
+    for featVec in dataSet:
+        if featVec[axis] == value:
+            reducedFeatVec = featVec[:axis]
+            reducedFeatVec.extend(featVect[axis+1:])
+            retDataset.append(reducedFeatVec)
+    return dataSet
     
