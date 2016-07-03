@@ -24,10 +24,10 @@ def createDataSet():
     return dataSet, labels
 
 def splitDataSet(dataSet, axis, value):
-    retDataset = []
+    retDataSet = []
     for featVec in dataSet:
         if featVec[axis] == value:
             reducedFeatVec = featVec[:axis]
             reducedFeatVec.extend(featVec[axis+1:])
             retDataset.append(reducedFeatVec)
-    return dataSet
+    return retDataSet
