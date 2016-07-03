@@ -21,7 +21,7 @@ def createDataSet():
             [1,0,'no'],
             [0,1,'no'],
             [0,1,'no']]
-    labels = ['no surfacing','slippers']
+    labels = ['no surfacing','flippers']
     return dataSet, labels
 
 def splitDataSet(dataSet, axis, value):
@@ -83,8 +83,8 @@ def classify(inputTree, featLabels, testVec):
     secondDict = inputTree[firstStr]
     featIndex = featLabels.index(firstStr)
     for key in secondDict.keys():
-        if type(secondDict[key]).__name__=='dict':
-            currentLabel = classify(secondDict[key], featLabels, testVec)
-        else: currentLabel = secondDict[key]
+        if testVec[featIndex] == key:
+            if type(secondDict[key]).__name__=='dict':
+                currentLabel = classify(secondDict[key], featLabels, testVec)
+            else: currentLabel = secondDict[key]
     return currentLabel
-    
