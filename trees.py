@@ -77,4 +77,14 @@ def createTree(dataSet, labels):
         myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet,
                                         bestFeat, value), subLabels)
     return myTree
+
+def classify(inputTree, featLabels, testVec):
+    firstStr = list(inputTree.keys())[0]
+    secondDict = inputTree[firstStr]
+    featIndex = featLabels.index(firstStr)
+    for key in secondDict.keys():
+        if type(secondDict[key]).__name__=='dict':
+            currentLabel = classify(secondDict[key], featLabels, testVec)
+        else: currentLabel = secondDict[key]
+    return currentLabel
     
