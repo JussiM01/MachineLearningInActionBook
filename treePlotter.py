@@ -38,7 +38,7 @@ def getTreeDepth(myTree):
         if thisDepth > maxDepth: maxDepth = thisDepth
     return maxDepth
 
-def retrieveTree((i):
+def retrieveTree(i):
     listOfTrees = [
         {
             'no surfacing':{
