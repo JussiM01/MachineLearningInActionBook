@@ -1,3 +1,5 @@
+from numpy import *
+
 def loadDataSet():
     postingList = [['my', 'has', 'flea', 'problems', 'help', 'please'],
             ['maybe', 'not', 'take', 'him', 'to', 'dog', 'park','stupid'],
@@ -38,4 +40,3 @@ def trainNB0(trainMatrix, trainCateory):
     p1Vect = p1Num/p1Denom     # change to log()
     p0Vect = p0Num/p0Denom     # change to log()
     return p0Vect, p1Vect, pAbusive
-    
