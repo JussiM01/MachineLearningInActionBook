@@ -147,3 +147,20 @@ def localWords(feed1, feed0):
         if classifyNB(array(wordVector), p0V, p1V, pSpam) != classList[docIndex]: errorCount += 1
     print('the error rate is:', float(errorCount)/len(testSet))
     return vocabList, p0V, p1V
+
+def getTopWords(ny, sf):
+    import operator
+    vocabList, p0V, p1V = localWords(ny,sf)
+    topNY=[]; topSF=[]
+    for i in range(len(p0V)):
+        if p0V[i] > -0.6: topSF.append(vocabList[i], p0V[i])
+        if p1V[i] > -0.6: topNY.append(vocabList[i], p1V[i])
+    sortedSF = sorted(topSF, key=lambda pair: pair[1], reverse=True)
+    print("SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**")
+    for item in sortedSF:
+        print(item[0])
+    sortedNY = sorted(topNY, key=lambda pair: pair[1], reverse=True)
+    print("NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**")
+    for item in sortedNY:
+        print(item[0])
+        
