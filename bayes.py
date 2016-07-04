@@ -1,7 +1,7 @@
 from numpy import *
 
 def loadDataSet():
-    postingList = [['my', 'has', 'flea', 'problems', 'help', 'please'],
+    postingList = [['my', 'dog', 'has', 'flea', 'problems', 'help', 'please'],
             ['maybe', 'not', 'take', 'him', 'to', 'dog', 'park','stupid'],
             ['my', 'dalmation', 'is', 'so', 'cute', 'I', 'love', 'him'],
             ['stop', 'posting', 'stupid', 'worthless', 'garbage'],
@@ -24,14 +24,14 @@ def setOfWords2Vec(vocabList, inputSet):
         else: print("the word: %s is not in my Vocabulary!" % word)
     return returnVec
 
-def trainNB0(trainMatrix, trainCateory):
+def trainNB0(trainMatrix, trainCategory):
     numTrainDocs = len(trainMatrix)
     numWords = len(trainMatrix[0])
-    pAbusive = sum(trainCateory)/float(numTrainDocs)
+    pAbusive = sum(trainCategory)/float(numTrainDocs)
     p0Num = zeros(numWords); p1Num = zeros(numWords)
     p0Denom = 0.0; p1Denom = 0.0
     for i in range(numTrainDocs):
-        if trainCateory[i] == 1:
+        if trainCategory[i] == 1:
             p1Num += trainMatrix[i]
             p1Denom += sum(trainMatrix[i])
         else:
