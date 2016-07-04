@@ -111,7 +111,7 @@ def calcMostFreq(vocabList, fullText):
     freqDict = {}
     for token in vocabList:
         freqDict[token] = fullText.count(token)
-    sortedFreq = sorted(freqDict.iteritems(), key=operator.itemgetter(1), reverse=True)
+    sortedFreq = sorted(freqDict.items(), key=operator.itemgetter(1), reverse=True)
     return sortedFreq[:30]
 
 def localWords(feed1, feed0):
@@ -147,4 +147,3 @@ def localWords(feed1, feed0):
         if classifyNB(array(wordVector), p0V, p1V, pSpam) != classList[docIndex]: errorCount += 1
     print('the error rate is:', float(errorCount)/len(testSet))
     return vocabList, p0V, p1V
-    
