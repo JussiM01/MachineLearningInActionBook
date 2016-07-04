@@ -91,7 +91,7 @@ def spamTest():
     vocabList = createVocabList(docList)
     trainingSet = range(50); testSet = []
     for i in range(10):
-        randIndex int(random.uniform(0, len(trainingSet)))
+        randIndex = int(random.uniform(0, len(trainingSet)))
         testSet.append(trainingSet[randIndex])
         del(trainingSet[randIndex])
     trainMat = []; trainClasses = []
