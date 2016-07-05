@@ -47,4 +47,14 @@ def plotBestFit(wei):
     ax.plot(x, y)
     plt.xlabel('X1'); plt.ylabel('X2')
     plt.show()
+
+def stocGradAscent0(dataMatrix, classLabels):
+    m, n = shape(dataMatrix)
+    alpha = 0.01
+    weights = ones(n)
+    for i in range(m):
+        h = sigmoid(sum(dataMatrix[i]*weights))
+        error = classLabels[i] - h
+        weights = weights + alpha * error * dataMatrix[i]
+    return weights
     
