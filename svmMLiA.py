@@ -28,7 +28,7 @@ def smoSimple(dataMatIn, classLabels, C, toler, maxIter):
     while (iter < maxIter):
         alphaPairsChanged = 0
         for i in range(m):
-            fXi = float(multiply(alphas, labelMat):T*\
+            fXi = float(multiply(alphas, labelMat).T*\
                 dataMatrix*dataMatrix[i,:].T)) + b
             Ei = fXi - float(labelMat[i])
             if ((labelMat[i]*Ei < -toler) and (alphas[i] < C) or \
