@@ -1,3 +1,5 @@
+from numpy import *
+
 def loadDataSet(fileName):
     dataMat = []; labelMat = []
     fr = open(fileName)
