@@ -25,7 +25,7 @@ def clipAlpha(aj, H, L):
 def smoSimple(dataMatIn, classLabels, C, toler, maxIter):
     dataMatrix = mat(dataMatIn); labelMat = mat(classLabels).transpose()
     b = 0; m, n = shape(dataMatrix)
-    alphas = mat(zeros((m, 1))
+    alphas = mat(zeros((m, 1)))
     iter = 0
     while (iter < maxIter):
         alphaPairsChanged = 0
