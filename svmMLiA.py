@@ -45,7 +45,7 @@ def smoSimple(dataMatIn, classLabels, C, toler, maxIter):
                     L = max(0, alphas[j] + alphas[i] - C)
                     H = min(C, alphas[j] + alphas[i])
                 if L == H: print("L==H"); continue
-                eta = 2.0 * dataMatrix[i,:] dataMatrix[j,:].T - \
+                eta = 2.0 * dataMatrix[i,:]*dataMatrix[j,:].T - \
                     dataMatrix[i,:]*dataMatrix[i,:].T - \
                     dataMatrix[j,:]*dataMatrix[j,:].T
                 if eta >= 0: print("eta>=0"); continue
