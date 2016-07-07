@@ -142,7 +142,7 @@ def innerL(i, oS):
         b2 = oS.b - Ej - oS.labelMat[i]*(oS.alphas[i]-alphaIold)*\
             oS.X[i,:]*oS.X[j,:].T - oS.labelMat[j]*\
             (oS.alphas[j]-alphaJold)*oS.X[j,:]*oS.X[j,:].T
-        if (0 < oS.alphas[i]) and (oS.c > oS.alphas[i]): oS.b = b1
+        if (0 < oS.alphas[i]) and (oS.C > oS.alphas[i]): oS.b = b1
         elif (0 < oS.alphas[j]) and (oS.C > oS.alphas[j]): oS.b = b2
         else: oS.b = (b1 + b2)/2.0
         return 1
