@@ -137,7 +137,7 @@ def innerL(i, oS):
                 (alphaJold - oS.alphas[j])
         updateEk(oS, i)
         b1 = oS.b - Ei - oS.labelMat[i]*(oS.alphas[i]-alphaIold)*\
-            oS.X[i,:]*oS.X[j,:].T - oS.labelMat[j]*\
+            oS.X[i,:]*oS.X[i,:].T - oS.labelMat[j]*\
             (oS.alphas[j]-alphaJold)*oS.X[i,:]*oS.X[j,:].T
         b2 = oS.b - Ej - oS.labelMat[i]*(oS.alphas[i]-alphaIold)*\
             oS.X[i,:]*oS.X[j,:].T - oS.labelMat[j]*\
@@ -179,4 +179,3 @@ def calcWs(alphas, dataArr, classLabels):
     for i in range(m):
         w += multiply(alphas[i]*labelMat[i], X[i,:].T)
     return w
-    
