@@ -125,7 +125,7 @@ def innerL(i, oS):
             L = max(0, Os.alphas[j] + oS.alphas[i] - oS.C)
             H = min(oS.C, oS.alphas[j] + oS.alphas[i])
         if L == H: print("L==H"); return 0
-        eta = 2.0 * oS.X[i,:]*oS.X[j,:].T - oS.X[i,:]*oS[i,:].T - \
+        eta = 2.0 * oS.X[i,:]*oS.X[j,:].T - oS.X[i,:]*oS.X[i,:].T - \
             oS.X[j,:]*oS[j,:].T
         if eta >= 0: print("eta>=0"); return 0
         oS.alphas[j] -= oS.labelMat[j]*(Ei - Ej)/eta
