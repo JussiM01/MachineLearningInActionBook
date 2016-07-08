@@ -216,7 +216,7 @@ def testRbf(k1=1.3):
         KernelEval = kernelTrans(sVs, datMat[i, :], ('rbf', k1))
         predict=KernelEval.T * multiply(labelSV, alphas[svInd]) + b
         if sign(predict) != sign(labelArr[i]): errorCount += 1
-    print("the training error rate is: %f" (float(errorCount)/m))
+    print("the training error rate is: %f" % (float(errorCount)/m))
     dataArr, labelArr = loadDataSet('svm/testSetRBF2.txt')
     errorCount = 0
     datMat=mat(dataArr); labelMat = mat(labelArr).transpose()
