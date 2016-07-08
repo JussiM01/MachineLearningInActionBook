@@ -204,7 +204,7 @@ def kernelTrans(X, A, kTup):
 
 def testRbf(k1=1.3):
     dataArr, labelArr = loadDataSet('svm/testSetRBF.txt')
-    b, alphas = smoP(dataArr, labelArr, 200, 0.0001, 1000, ('rbf', k1))
+    b, alphas = smoP(dataArr, labelArr, 200, 0.0001, 10000, ('rbf', k1))
     datMat=mat(dataArr); labelMat = mat(labelArr).transpose()
     svInd=nonzero(alphas.A>0)[0]
     sVs=datMat[svInd]
