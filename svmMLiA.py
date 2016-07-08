@@ -177,7 +177,7 @@ def smoP(dataMatIn, classLabels, C, toler, maxIter, kTup=('lin', 0)):
                 (iter, i, alphaPairsChanged))
             iter += 1
         if entireSet: entireSet = False
-        elif (alphaPairsChanged): entireSet = True
+        elif (alphaPairsChanged == 0): entireSet = True
         print("iteration number: %d" % iter)
     return oS.b, oS.alphas
 
