@@ -118,8 +118,7 @@ def updateEk(oS, k):
 
 def innerL(i, oS):
     Ei = calcEk(oS, i)
-    if ((oS.labelMat[i]*Ei < -oS.tol) and (oS.alphas[i] < oS.C)) or \
-        ((oS.labelMat[i]*Ei > oS.tol) and (oS.alphas[i] >0)):
+    if ((oS.labelMat[i]*Ei < -oS.tol) and (oS.alphas[i] < oS.C)) or ((oS.labelMat[i]*Ei > oS.tol) and (oS.alphas[i] > 0)):
         j, Ej = selectJ(i, oS, Ei)
         alphaIold = oS.alphas[i].copy(); alphaJold = oS.alphas[j].copy()
         if (oS.labelMat[i] != oS.labelMat[j]):
@@ -128,18 +127,22 @@ def innerL(i, oS):
         else:
             L = max(0, oS.alphas[j] + oS.alphas[i] - oS.C)
             H = min(oS.C, oS.alphas[j] + oS.alphas[i])
-        if L == H: print("L==H"); return 0
+        if L == H:
+            print("L==H")
+            return 0
         # eta = 2.0 * oS.X[i,:]*oS.X[j,:].T - oS.X[i,:]*oS.X[i,:].T - \
         #     oS.X[j,:]*oS.X[j,:].T
         eta = 2.0 * oS.K[i, j] - oS.K[i, i] - oS.K[j, j]
-        if eta >= 0: print("eta>=0"); return 0
+        if eta >= 0:
+            print("eta>=0")
+            return 0
         oS.alphas[j] -= oS.labelMat[j]*(Ei - Ej)/eta
         oS.alphas[j] = clipAlpha(oS.alphas[j], H, L)
         updateEk(oS, j)
         if (abs(oS.alphas[j] - alphaJold) < 0.00001):
-            print("j moving enough"); return 0
-        oS.alphas[i] += oS.labelMat[j]*oS.labelMat[i]*\
-                (alphaJold - oS.alphas[j])
+            print("j not moving enough")
+            return 0
+        oS.alphas[i] += oS.labelMat[j]*oS.labelMat[i]*(alphaJold - oS.alphas[j])
         updateEk(oS, i)
         # b1 = oS.b - Ei - oS.labelMat[i]*(oS.alphas[i]-alphaIold)*\
         #     oS.X[i,:]*oS.X[i,:].T - oS.labelMat[j]*\
@@ -151,9 +154,12 @@ def innerL(i, oS):
                 oS.labelMat[j]*(oS.alphas[j]-alphaJold)*oS.K[i, j]
         b2 = oS.b - Ej - oS.labelMat[i]*(oS.alphas[i]-alphaIold)*oS.K[i, j]-\
                 oS.labelMat[j]*(oS.alphas[j]-alphaJold)*oS.K[j, j]
-        if (0 < oS.alphas[i]) and (oS.C > oS.alphas[i]): oS.b = b1
-        elif (0 < oS.alphas[j]) and (oS.C > oS.alphas[j]): oS.b = b2
-        else: oS.b = (b1 + b2)/2.0
+        if (0 < oS.alphas[i]) and (oS.C > oS.alphas[i]):
+            oS.b = b1
+        elif (0 < oS.alphas[j]) and (oS.C > oS.alphas[j]):
+            oS.b = b2
+        else:
+            oS.b = (b1 + b2)/2.0
         return 1
     else: return 0
 
@@ -174,10 +180,12 @@ def smoP(dataMatIn, classLabels, C, toler, maxIter, kTup=('lin', 0)):
             for i in nonBoundIs:
                 alphaPairsChanged += innerL(i, oS)
                 print("non-bound, iter: %d i:%d, pairs changed %d" % \
-                (iter, i, alphaPairsChanged))
+                    (iter, i, alphaPairsChanged))
             iter += 1
-        if entireSet: entireSet = False
-        elif (alphaPairsChanged == 0): entireSet = True
+        if entireSet:
+            entireSet = False
+        elif (alphaPairsChanged == 0):
+            entireSet = True
         print("iteration number: %d" % iter)
     return oS.b, oS.alphas
 
@@ -192,14 +200,15 @@ def calcWs(alphas, dataArr, classLabels):
 def kernelTrans(X, A, kTup):
     m, n = shape(X)
     K = mat(zeros((m, 1)))
-    if kTup[0]=='lin': K = X * A.T
+    if kTup[0]=='lin':
+        K = X * A.T
     elif kTup[0]=='rbf':
         for j in range(m):
             deltaRow = X[j,:] - A
             K[j] = deltaRow*deltaRow.T
-        K = exp(K /(-1*kTup[1]**2))
-    else: raise NameError('Houston We Have a Problem -- \
-    That Kernel is not recognized')
+        K = exp(K /(-1*(kTup[1]**2)))
+    else:
+        raise NameError('Houston We Have a Problem -- That Kernel is not recognized')
     return K
 
 def testRbf(k1=1.3):
@@ -213,8 +222,8 @@ def testRbf(k1=1.3):
     m, n = shape(datMat)
     errorCount = 0
     for i in range(m):
-        KernelEval = kernelTrans(sVs, datMat[i, :], ('rbf', k1))
-        predict=KernelEval.T * multiply(labelSV, alphas[svInd]) + b
+        kernelEval = kernelTrans(sVs, datMat[i, :], ('rbf', k1))
+        predict=kernelEval.T * multiply(labelSV, alphas[svInd]) + b
         if sign(predict) != sign(labelArr[i]): errorCount += 1
     print("the training error rate is: %f" % (float(errorCount)/m))
     dataArr, labelArr = loadDataSet('svm/testSetRBF2.txt')
@@ -222,7 +231,7 @@ def testRbf(k1=1.3):
     datMat=mat(dataArr); labelMat = mat(labelArr).transpose()
     m, n = shape(datMat)
     for i in range(m):
-        KernelEval = kernelTrans(sVs, datMat[i,:], ('rbf', k1))
-        predict=KernelEval.T * multiply(labelSV, alphas[svInd]) + b
+        kernelEval = kernelTrans(sVs, datMat[i,:], ('rbf', k1))
+        predict=kernelEval.T * multiply(labelSV, alphas[svInd]) + b
         if sign(predict) != sign(labelArr[i]): errorCount += 1
     print("the test error rate is: %f" % (float(errorCount)/m))
