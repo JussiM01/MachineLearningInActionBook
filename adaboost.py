@@ -11,7 +11,7 @@ def loadSimpData():
 
 def stumpClassify(dataMatrix, threshVal, threshIneq):
     retArray = ones((shape(dataMatrix)[0], 1))
-    if threshIneq = 'lt':
+    if threshIneq == 'lt':
         retArray[dataMatrix[:,dimen] <= threshVal] = -1.0
     else:
         retArray[dataMatrix[:,dimen] > threshVal] = -1.0
@@ -42,4 +42,3 @@ def buildStump(dataArr, classLabels, D):
                     bestStump['thresh'] = threshVal
                     bestStump['ineq'] = inequal
     return bestStump, minError, bestClasEst
-    
