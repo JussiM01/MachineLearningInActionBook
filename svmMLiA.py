@@ -287,4 +287,4 @@ def testDigits(kTup=('rbf', 10)):
         predict = kernelEval.T * multiply(labelSV, alphas[svInd]) + b
         if sign(predict) != sign(labelArr[i]):
             errorCount += 1
-    print("the test error rate is: %f" (float(errorCount)/m))
+    print("the test error rate is: %f" % (float(errorCount)/m))
