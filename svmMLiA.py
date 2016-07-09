@@ -269,7 +269,7 @@ def testDigits(kTup=('rbf', 10)):
     svInd=nonzero(alphas.A>0)[0]
     sVs=datMat[svInd]
     labelSV = labelMat[svInd]
-    print("there are %d Support Vectors" % shape(sVS)[0])
+    print("there are %d Support Vectors" % shape(sVs)[0])
     m, n = shape(datMat)
     errorCount = 0
     for i in range(m):
