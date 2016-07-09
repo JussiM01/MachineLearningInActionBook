@@ -263,24 +263,24 @@ def loadImages(dirName):
     return trainingMat, hwLabels
 
 def testDigits(kTup=('rbf', 10)):
-    dataArr, labelArr = loadImages('trainingDigits')
+    dataArr, labelArr = loadImages('svm/trainingDigits')
     b, alphas = smoP(dataArr, labelArr, 200, 0.0001, 10000, kTup)
     datMat=mat(dataArr); labelMat = mat(labelArr).transpose()
     svInd=nonzero(alphas.A>0)[0]
-    sVs=dataMat[svInd]
+    sVs=datMat[svInd]
     labelSV = labelMat[svInd]
     print("there are %d Support Vectors" % shape(sVS)[0])
     m, n = shape(datMat)
     errorCount = 0
     for i in range(m):
-        kernelEval = kernelTrans(sVs, dataMat[i,:], kTup)
+        kernelEval = kernelTrans(sVs, datMat[i,:], kTup)
         predict=kernelEval.T * multiply(labelSV, alphas[svInd]) + b
         if sign(predict) != sign(labelArr[i]):
             errorCount += 1
     print("the training error rate is: %f" % (float(errorCount)/m))
-    dataArr, labelArr = loadImages('testDigits')
+    dataArr, labelArr = loadImages('svm/testDigits')
     errorCount = 0
-    dataMat=mat(dataArr); labelMat = mat(labelArr).transpose()
+    datMat=mat(dataArr); labelMat = mat(labelArr).transpose()
     m, n = shape(datMat)
     for i in range(m):
         kernelEval = kernelTrans(sVs, datMat[i,:], kTup)
