@@ -259,7 +259,7 @@ def loadImages(dirName):
             hwLabels.append(-1)
         else:
             hwLabels.append(1)
-        trainingMat[i,:] = img2vector('%s/%s' % (dirname, fileNameStr))
+        trainingMat[i,:] = img2vector('%s/%s' % (dirName, fileNameStr))
     return trainingMat, hwLabels
 
 def testDigits(kTup=('rbf', 10)):
@@ -288,4 +288,3 @@ def testDigits(kTup=('rbf', 10)):
         if sign(predict) != sign(labelArr[i]):
             errorCount += 1
     print("the test error rate is: %f" (float(errorCount)/m))
-    
