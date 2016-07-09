@@ -20,7 +20,7 @@ def stumpClassify(dataMatrix, threshVal, threshIneq):
 def buildStump(dataArr, classLabels, D):
     dataMatrix = mat(dataArr); labelMat = mat(classLabels).T
     m, n = shape(dataMatrix)
-    numSteps = 10.0; bestStump = {}; bestClasEst = mat(zeros(m, 1))
+    numSteps = 10.0; bestStump = {}; bestClasEst = mat(zeros((m, 1)))
     minError = inf
     for i in range(n):
         rangeMin = dataMatrix[:,i].min(); rangeMax = dataMatrix[:,i].max()
