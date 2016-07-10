@@ -30,7 +30,8 @@ def lwlr(testPoint, xArr, yArr, k=1.0):
         diffMat = testPoint - xMat[j,:]
         weights[j,j] = exp(diffMat*diffMat.T/(-2.0*k**2))
     xTx = xMat.T * (weights * xMat)
-    if linalg.det(xTx) == 0.0:
+    # print("cond(xTx) = %f" % linalg.cond(xTx))
+    if linalg.cond(xTx) > 1e7:
         print("This matrix is singular, cannot do inverse")
         return
     ws = xTx.I * (xMat.T * (weights * yMat))
@@ -45,4 +46,3 @@ def lwlrTest(testArr, xArr, yArr, k=1.0):
 
 def rssError(yArr, yHatArr):
     return ((yArr-yHatArr)**2).sum()
-    
