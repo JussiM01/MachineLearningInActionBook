@@ -76,3 +76,17 @@ def adaClassify(dataToClass, classifierArr):
         aggClassEst += classifierArr[i]['alpha']*classEst
         print(aggClassEst)
     return sign(aggClassEst)
+
+def loadDataSet(fileName):
+    numFeat = len(open(fileName).readline().split('\t'))
+    dataMat = []; labelMat = []
+    fr = open(fileName)
+    for line in fr.readlines():
+        lineArr = []
+        curLine = line.strip().split('\t')
+        for i in range(numFeat - 1):
+            lineArr.append(float(curline[i]))
+        dataMat.apped(lineArr)
+        labelMat.append(float(curLine[-1]))
+    return dataMat, labelMat
+    
