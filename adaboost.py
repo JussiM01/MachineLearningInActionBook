@@ -101,7 +101,7 @@ def plotROC(predStrengths, classLabels):
     fig = plt.figure()
     fig.clf()
     ax = plt.subplot(111)
-    for index in sortedIndicies.totlist()[0]:
+    for index in sortedIndicies.tolist()[0]:
         if classLabels[index] == 1.0:
             delX = 0; delY = yStep
         else:
