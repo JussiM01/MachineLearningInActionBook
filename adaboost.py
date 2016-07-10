@@ -85,8 +85,7 @@ def loadDataSet(fileName):
         lineArr = []
         curLine = line.strip().split('\t')
         for i in range(numFeat - 1):
-            lineArr.append(float(curline[i]))
+            lineArr.append(float(curLine[i]))
         dataMat.apped(lineArr)
         labelMat.append(float(curLine[-1]))
     return dataMat, labelMat
-    
