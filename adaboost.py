@@ -63,7 +63,7 @@ def adaBoostTrainDS(dataArr, classLabels, numIt=40):
         errorRate = aggErrors.sum()/m
         print("total error: ", errorRate)#,"\n")
         if errorRate == 0.0: break
-    return weakClassArr
+    return weakClassArr, aggClassEst
 
 def adaClassify(dataToClass, classifierArr):
     dataMatrix = mat(dataToClass)
@@ -115,4 +115,3 @@ def plotROC(predStrengths, classLabels):
     ax.axis([0,1,0,1])
     plt.show()
     print("the Area Under the Curve is: ",ySum*xStep)
-    
