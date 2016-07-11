@@ -92,4 +92,7 @@ def stageWise(xArr, yArr, eps=0.01, numIt=100):
         ws = wsMax.copy()
         returnMat[i,:] = ws.T
     return returnMat
+
+def regularize(data):
+    return (data - mean(data, 0))/var(data, 0)
     
