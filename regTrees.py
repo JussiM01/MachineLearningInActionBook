@@ -31,7 +31,7 @@ def createTree(dataSet, leafType=regLeaf, errType=regErr, ops=(1,4)):
     retTree['right']= createTree(rSet, leafType, errType, ops)
     return retTree
 
-def chooseBestSplit(dataSet, leafType=regLeaf, errType=regErr, ops(1,4)):
+def chooseBestSplit(dataSet, leafType=regLeaf, errType=regErr, ops((1,4)):
     tolS = ops[0]; tolN = ops[1]
     if len(set(dataSet[:,-1].T.tolist()[0])) == 1:
         return None, leafType(dataSet)
@@ -53,4 +53,3 @@ def chooseBestSplit(dataSet, leafType=regLeaf, errType=regErr, ops(1,4)):
     if (shape(mat0)[0] < tolN) or (shape(mat1)[0] < tolN):
         return None, leafType(dataSet)
     return bestIndex, bestValue
-    
