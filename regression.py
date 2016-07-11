@@ -85,7 +85,7 @@ def stageWise(xArr, yArr, eps=0.01, numIt=100):
                 wsTest = ws.copy()
                 wsTest[j] += eps*sign
                 yTest = xMat*wsTest
-                rssE = rssError(yMat, yTest.A)
+                rssE = rssError(yMat.A, yTest.A)
                 if rssE < lowestError:
                     lowestError = rssE
                     wsMax = wsTest
