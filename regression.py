@@ -77,6 +77,7 @@ def stageWise(xArr, yArr, eps=0.01, numIt=100):
     xMat = regularize(xMat)
     m, n = shape(xMat)
     ws = zeros((n, 1)); wsTest = ws.copy(); wsMax = ws.copy()
+    returnMat = zeros((numIt, n))
     for i in range(numIt):
         print("ws.T")
         lowestError = inf
