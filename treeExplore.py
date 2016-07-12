@@ -10,7 +10,11 @@ def drawNewTree():
 
 root=Tk()
 
-Label(root, text="Plot Place Holder").grid(row=0, columnspan=3)
+# Label(root, text="Plot Place Holder").grid(row=0, columnspan=3)
+reDraw.f = Figure(figsize=(5,4), dpi=100)
+reDraw.canvas = FigureCanvasTkAgg(reDraw.f, master=root)
+reDraw.canvas.show()
+reDraw.canvas.get_tk_widget().grid(row=0, columnspan=3)
 
 Label(root, text="tolN").grid(row=1, column=0)
 tolNentry = Entry(root)
