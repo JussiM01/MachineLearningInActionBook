@@ -1,6 +1,10 @@
 from numpy import *
 from tkinter import *
 import regTrees
+import matplotlib
+matplotlib.use('TkAgg')
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
 
 def reDraw(tolS, tolN):
     pass
