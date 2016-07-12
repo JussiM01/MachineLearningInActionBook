@@ -107,7 +107,7 @@ def modelErr(dataSet):
     return sum(power(Y - yHat, 2))
 
 def regTreeEval(model, inDat):
-    return foat(model)
+    return float(model)
 
 def modelTreeEval(model, inDat):
     n = shape(inDat)[1]
