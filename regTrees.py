@@ -88,7 +88,7 @@ def prune(tree, testData):
 
 def linearSolve(dataSet):
     m, n = shape(dataSet)
-    X = mat(ones((m, n))); Y = mat(ones(m, 1))
+    X = mat(ones((m, n))); Y = mat(ones((m, 1)))
     X[:,1:n] = dataSet[:,0:n-1]; Y = dataSet[:,-1]
     xTx = X.T*X
     if linalg.cond(xTx) > 1e10:
@@ -105,4 +105,3 @@ def modelErr(dataSet):
     ws, X, Y = linearSolve(dataSet)
     yHat = X * ws
     return sum(power(Y - yHat, 2))
-    
