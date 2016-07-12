@@ -76,7 +76,7 @@ def prune(tree, testData):
     if not isTree(tree['left']) and not isTree(tree['right']):
         lSet, rSet = binSplitDataSet(testData, tree['spInd'],
             tree['spVal'])
-        errorNoMerge = sum(power(lSet[:,-1] - tree['left'], 2) +\
+        errorNoMerge = sum(power(lSet[:,-1] - tree['left'], 2)) +\
             sum(power(rSet[:,-1] - tree['right'], 2))
         treeMean = (tree['left']+tree['right'])/2.0
         errorMerge = sum(power(testData[:,-1] - treeMean, 2))
