@@ -126,7 +126,7 @@ def treeForeCast(tree, inData, modelEval=regTreeEval):
         if isTree(tree['right']):
             return treeForeCast(tree['right'], inData, modelEval)
         else:
-            return modelEval(tree['right'], inData, modelEval)
+            return modelEval(tree['right'], inData)
 
 def createForeCast(tree, testData, modelEval=regTreeEval):
     m=len(testData)
@@ -134,4 +134,3 @@ def createForeCast(tree, testData, modelEval=regTreeEval):
     for i in range(m):
         yHat[i,0] = treeForeCast(tree, mat(testData[i]), modelEval)
     return yHat
-    
