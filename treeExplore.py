@@ -21,7 +21,7 @@ tolSentry = Entry(root)
 tolSentry.grid(row=2, column=1)
 tolSentry.insert(0,'1.0')
 Button(root, text="reDraw", command=drawNewTree).grid(row=1, column=2, rowspan=3)
-chkBtnVar = intVar()
+chkBtnVar = IntVar()
 chkBtn = Checkbutton(root, text="Model Tree", variable = chkBtnVar)
 chkBtn.grid(row=3, column=0, columnspan=2)
 
