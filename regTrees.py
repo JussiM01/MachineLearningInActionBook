@@ -73,7 +73,7 @@ def prune(tree, testData):
         tree['left'] = prune(tree['left'], lSet)
     if isTree(tree['right']):
         tree['right'] = prune(tree['right'], rSet)
-    if not isTree(tree['left']) and not isTree(tree['right']):
+    if (not isTree(tree['left'])) and (not isTree(tree['right'])):
         lSet, rSet = binSplitDataSet(testData, tree['spInd'],
             tree['spVal'])
         errorNoMerge = sum(power(lSet[:,-1] - tree['left'], 2)) +\
@@ -85,3 +85,24 @@ def prune(tree, testData):
             return treeMean
         else: return tree
     else: return tree
+
+def linearSolve(dataSet):
+    m, n = shape(dataSet)
+    X = mat(ones((m, n))); Y = mat(ones(m, 1))
+    X[:,1:n] = dataSet[:,0:n-1]; Y = dataSet[:,-1]
+    xTx = X.T*X
+    if linalg.cond(xTx) > 1e10:
+        raise NameError('This matrix is singular, cannot do inverse,\n\
+        try increasing the second value of ops')
+    ws = xTx.I * (X.T * Y)
+    return ws, X, Y
+
+def modelLeaf(dataSet):
+    ws, X, Y = linearSolve(dataSet)
+    return ws
+
+def modelErr(dataSet):
+    ws, X, Y = linearSolve(dataSet)
+    yHat = X * ws
+    return sum(power(Y - yHat, 2))
+    
