@@ -62,7 +62,7 @@ def getMean(tree):
         tree['right'] = getMean(tree['right'])
     if isTree(tree['left']):
         tree['left'] = getMean(tree['left'])
-        return (tree['left']+tree['right'])/2.0
+    return (tree['left']+tree['right'])/2.0
 
 def prune(tree, testData):
     if shape(testData)[0] == 0: return getMean(tree)
