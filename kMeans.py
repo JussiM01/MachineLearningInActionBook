@@ -48,7 +48,7 @@ def biKmeans(dataSet, k, distMeas=distEclud):
     centroid0 = mean(dataSet, axis=0).tolist()[0]
     centList = [centroid0]
     for j in range(m):
-        clusterAssment[j,i] = distMeas(mat(centroid0), dataSet[j,:])**2
+        clusterAssment[j,1] = distMeas(mat(centroid0), dataSet[j,:])**2
     while (len(centList) < k):
         lowestSSE = inf
         for i in range(len(centList)):
