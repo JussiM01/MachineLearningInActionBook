@@ -44,7 +44,7 @@ def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
 
 def biKmeans(dataSet, k, distMeas=distEclud):
     m = shape(dataSet)[0]
-    clusterAssment = mat(zeros(m, 2))
+    clusterAssment = mat(zeros((m, 2)))
     centroid0 = mean(dataSet, axis=0).tolist()[0]
     centList = [centroid0]
     for j in range(m):
@@ -76,4 +76,3 @@ def biKmeans(dataSet, k, distMeas=distEclud):
         clusterAssment[nonzero(clusterAssment[:,0].A == \
                     bestCentToSplit)[0],:] = bestClustAss
     return mat(centList), clusterAssment
-        
