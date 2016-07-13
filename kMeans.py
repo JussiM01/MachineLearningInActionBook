@@ -73,11 +73,11 @@ def biKmeans(dataSet, k, distMeas=distEclud):
                         bestCentToSplit
         print('the bestCentToSplit is: ',bestCentToSplit)
         print('the len of bestClustAss is: ', len(bestClustAss))
-        centList[bestCentToSplit] = bestNewCents[0,:]
-        centList.append(bestNewCents[1,:])
+        centList[bestCentToSplit] = bestNewCents[0,:].tolist()[0]
+        centList.append(bestNewCents[1,:].tolist()[0])
         clusterAssment[nonzero(clusterAssment[:,0].A == \
                     bestCentToSplit)[0],:] = bestClustAss
-    return centList, clusterAssment
+    return mat(centList), clusterAssment
 
 def distSLC(vecA, vecB):
     a = sin(vecA[0,1]*pi/180) * sin(vecB[0,1]*pi/180)
@@ -91,6 +91,8 @@ def clusterClubs(numClust=5):
         lineArr = line.split('\t')
         datList.append([float(lineArr[4]), float(lineArr[3])])
     datMat = mat(datList)
+    # print('kMeans :', kMeans(datMat, numClust, distMeas=distSLC))
+    # print('biKmeans :', biKmeans(datMat, numClust, distMeas=distSLC))
     myCentroids, clustAssing = biKmeans(datMat, numClust, distMeas=distSLC)
     fig = plt.figure()
     rect=[0.1,0.1,0.8,0.8]
