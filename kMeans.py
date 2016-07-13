@@ -76,3 +76,10 @@ def biKmeans(dataSet, k, distMeas=distEclud):
         clusterAssment[nonzero(clusterAssment[:,0].A == \
                     bestCentToSplit)[0],:] = bestClustAss
     return centList, clusterAssment
+
+def distSLC(vecA, vecB):
+    a = sin(vecA[0,1]*pi/180) * sin(vecB[0,1]*pi/180)
+    b = cos(vecA[0,1]*pi/180) * cos(vecB[0,1]*pi/180) * \
+                cos(pi * (vecB[0,0]-vecA[0,0]) /180)
+    return arccos(a + b)*6371.0
+    
