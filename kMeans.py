@@ -97,7 +97,7 @@ def clusterClubs(numClust=5):
     scatterMarkers=['s', 'o', '^', '8', 'p', 'd', 'v', 'h', '>', '<']
     axprops = dict(xticks=[], yticks=[])
     ax0=fig.add_axes(rect, label='ax0', **axprops)
-    imgP = plt.imread('Portland.png')
+    imgP = plt.imread('kmeans/Portland.png')
     ax0.imshow(imgP)
     ax1=fig.add_axes(rect, label='ax1', frameon=False)
     for i in range(numClust):
