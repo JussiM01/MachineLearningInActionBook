@@ -4,7 +4,7 @@ def loadDataSet(fileName):
     dataMat = []
     fr = open(fileName)
     for line in fr.readline():
-        curline = line.strip().split('\t')
+        curLine = line.strip().split('\t')
         fltLine = map(float, curLine)
         dataMat.append(fltLine)
     return dataMat
@@ -20,4 +20,3 @@ def randCent(dataSet, k):
         rangeJ = float(max(dataSet[:,j]) -  minJ)
         centroids[:,j] = minJ + rangeJ * random.rand(k, 1)
     return centroids
-    
