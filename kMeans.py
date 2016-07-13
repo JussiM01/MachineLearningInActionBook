@@ -1,4 +1,4 @@
-form numpy import *
+from numpy import *
 
 def loadDataSet(fileName):
     dataMat = []
