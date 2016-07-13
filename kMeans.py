@@ -28,7 +28,7 @@ def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
     clusterChanged = True
     while clusterChanged:
         clusterChanged = False
-        for i range(m):
+        for i in range(m):
             minDist = inf; minIndex = -1
             for j in range(k):
                 distJI = distMeas(centroids[j,:], dataSet[i,:])
@@ -41,4 +41,3 @@ def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
             ptsInClust = dataSet[nonzero(clusterAssment[:,0].A==cent)[0]]
             centroids[cent,:] = mean(ptsInClust, axis=0)
     return centroids, clusterAssment
-    
