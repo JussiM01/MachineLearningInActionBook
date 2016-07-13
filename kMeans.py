@@ -75,5 +75,4 @@ def biKmeans(dataSet, k, distMeas=distEclud):
         centList.append(bestNewCents[1,:])
         clusterAssment[nonzero(clusterAssment[:,0].A == \
                     bestCentToSplit)[0],:] = bestClustAss
-    print(centList)
-    return mat(centList), clusterAssment
+    return centList, clusterAssment
