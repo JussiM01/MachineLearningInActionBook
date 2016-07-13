@@ -90,7 +90,7 @@ def clusterClubs(numClust=5):
     for line in open('kmeans/places.txt').readlines():
         lineArr = line.split('\t')
         datList.append([float(lineArr[4]), float(lineArr[3])])
-    dataMat = mat(datList)
+    datMat = mat(datList)
     myCentroids, clustAssing = biKmeans(datMat, numClust, distMeas=distSLC)
     fig = plt.figure()
     rect=[0.1,0.1,0.8,0.8]
@@ -109,4 +109,3 @@ def clusterClubs(numClust=5):
     ax1.scatter(myCentroids[:,0].flatten().A[0],
                 myCentroids[:,1].flatten().A[0], marker='+', s=300)
     plt.show()
-    
