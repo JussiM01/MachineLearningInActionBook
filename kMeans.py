@@ -91,8 +91,6 @@ def clusterClubs(numClust=5):
         lineArr = line.split('\t')
         datList.append([float(lineArr[4]), float(lineArr[3])])
     datMat = mat(datList)
-    # print('kMeans :', kMeans(datMat, numClust, distMeas=distSLC))
-    # print('biKmeans :', biKmeans(datMat, numClust, distMeas=distSLC))
     myCentroids, clustAssing = biKmeans(datMat, numClust, distMeas=distSLC)
     fig = plt.figure()
     rect=[0.1,0.1,0.8,0.8]
