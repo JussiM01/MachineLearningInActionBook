@@ -15,7 +15,7 @@ def scanD(D, Ck, minSupport):
     for tid in D:
         for can in Ck:
             if can.issubset(tid):
-                if not ssCnt.has_key(can): ssCnt[can]=1
+                if not can in ssCnt: ssCnt[can]=1
             else: ssCnt[can] += 1
     numItems = float(len(D))
     retList = []
