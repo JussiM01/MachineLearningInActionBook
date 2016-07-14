@@ -44,7 +44,7 @@ def apriori(dataSet, minSupport = 0.5):
     L1, supportData = scanD(D, C1, minSupport)
     L = [L1]
     k = 2
-    while (len([k-2]) > 0):
+    while (len(L[k-2]) > 0):
         Ck = aprioriGen(L[k-2], k)
         Lk, supK = scanD(D, Ck, minSupport)
         supportData.update(supK)
