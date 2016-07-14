@@ -54,7 +54,7 @@ def apriori(dataSet, minSupport = 0.5):
 
 def generateRules(L, supportData, minConf=0.7):
     bigRuleList = []
-    for i in range(1, len()):
+    for i in range(1, len(L)):
         for freqSet in L[i]:
             H1 = [frozenset([item]) for item in freqSet]
             if (i > 1):
