@@ -19,7 +19,7 @@ def createTree(dataSet, minSup=1):
     for trans in dataSet:
         for item in trans:
             headerTable[item] = headerTable.get(item, 0) + dataSet[trans]
-    for k in headerTable.keys():
+    for k in headerTable.copy().keys():
         if headerTable[k] < minSup:
             del(headerTable[k])
     freqItemSet = set(headerTable.key())
