@@ -91,8 +91,8 @@ def mineTree(inTree, headerTable, minSup, preFix, freqItemList):
         newFreqSet = preFix.copy()
         newFreqSet.add(basePat)
         freqItemList.append(newFreqSet)
-        condPatsBases = findPrefixPath(basePat, headerTable[basePat][1])
-        myCondTree, myHead = createTree(condPatsBases, minSup)
+        condPattBases = findPrefixPath(basePat, headerTable[basePat][1])
+        myCondTree, myHead = createTree(condPattBases, minSup)
         if myHead != None:
             print('conditional tree for: ',newFreqSet)
             myCondTree.disp(1)
