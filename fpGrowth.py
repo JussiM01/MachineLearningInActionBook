@@ -48,7 +48,7 @@ def updateTree(items, inTree, headerTable, count):
         else:
             updateHeader(headerTable[items[0]][1], inTree.children[items[0]])
     if len(items) > 1:
-        updateTree(items[1::], inTree.children[items[0]], headerTable, count)
+        updateTree(items[1:], inTree.children[items[0]], headerTable, count)
 
 def updateHeader(nodeToTest, targetNode):
     while (nodeToTest.nodeLink != None):
