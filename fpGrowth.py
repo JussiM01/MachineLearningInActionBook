@@ -94,4 +94,6 @@ def mineTree(inTree, headerTable, minSup, preFix, freqItemList):
         condPatsBases = findPrefixPath(basePat, headerTable[basePat][1])
         myCondTree, myHead = createTree(condPatsBases, minSup)
         if myHead != None:
+            print('conditional tree for: ',newFreqSet)
+            myCondTree.disp(1)
             mineTree(myCondTree, myHead, minSup, newFreqSet, freqItemList)
