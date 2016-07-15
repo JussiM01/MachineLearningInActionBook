@@ -22,7 +22,7 @@ def createTree(dataSet, minSup=1):
     for k in headerTable.copy().keys():
         if headerTable[k] < minSup:
             del(headerTable[k])
-    freqItemSet = set(headerTable.key())
+    freqItemSet = set(headerTable.keys())
     if len(freqItemSet) == 0: return None, None
     for k in headerTable:
         headerTable[k] = [headerTable[k], None]
