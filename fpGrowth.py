@@ -69,3 +69,18 @@ def createInitSet(dataSet):
     for trans in dataSet:
         retDict[frozenset(trans)] = 1
     return retDict
+
+def ascendTree(leafNode, prefixPath):
+    if leafNode.parent != None:
+        prefixPath.append(leafNode.name)
+        ascendTree(leafNode.parent, prefixPath)
+
+def findPrefixPath(basePat, treeNode):
+    condPats = {}
+    while treeNode != None:
+        prefixPath = []
+        ascendTree(treeNode, prefixPath)
+        if len(prefixPath) > 1:
+            condPats[frozenset(prefixPath[1:])] = treeNode.count
+        treeNode = treeNode.nodeLink
+    return condPats
