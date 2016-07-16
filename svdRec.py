@@ -45,3 +45,13 @@ def recommend(dataMat, user, N=3, simMeas=cosSim, estMethod=standEst):
         estimatedScore = estMethod(dataMat, user, simMeas, item)
         itemScores.append((item, estimatedScore))
     return sorted(itemScores, key=lambda jj: jj[1], reverse=True)[:N]
+
+def myMatrix():
+    return mat([
+        [4, 4, 0, 2, 2],
+        [4, 0, 0, 3, 3],
+        [4, 0, 0, 1, 1],
+        [1, 1, 1, 2, 0],
+        [2, 2, 2, 0, 0],
+        [1, 1, 1, 0, 0],
+        [5, 5, 5, 0, 0]])
