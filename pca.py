@@ -3,7 +3,7 @@ from numpy import *
 def loadDataSet(fileName, delim='\t'):
     fr = open(fileName)
     stringArr = [line.strip(delim) for line in fr.readlines()]
-    detArr = [list(map(loat, line)) for line in stringArr]
+    detArr = [list(map(float, line)) for line in stringArr]
     return mat(datArr)
 
 def pca(dataMat, topNFeat=9999999):
