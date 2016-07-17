@@ -69,3 +69,19 @@ def loadExData2():
         [0, 0, 0, 0, 0, 0, 5, 0, 0, 5, 0],
         [0, 0, 0, 3, 0, 0, 0, 0, 4, 5, 0],
         [1, 1, 2, 1, 1, 2, 1, 0, 4, 5, 0]])
+
+def svdEst(dataMat, user, simMeas, item):
+    n = shape(dataMat)[1]
+    simTotal = 0.0; ratSimTotal = 0.0
+    U,Sigma,VT = la.svd(dataMat)
+    Sig4 = mat(eye(4)*Sigma[:4])
+    xformedItems = dataMat.T * U[:,:4] * Sig4.I
+    for j in range(n):
+        user = dataMat[user, j]
+        if userRating == 0 or j==item: continue
+        similarity = simMeas(xformedItems[item,:].T, xformedItems[j, :].T)
+        print('the %d and %d similarity is: %f' % (item, j, similarity))
+        simTotal += similarity
+        ratSimTotal += similarity * userRating
+    if simTotal == 0: return 0
+else: return ratSimTotal/simTotal
