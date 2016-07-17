@@ -84,4 +84,4 @@ def svdEst(dataMat, user, simMeas, item):
         simTotal += similarity
         ratSimTotal += similarity * userRating
     if simTotal == 0: return 0
-else: return ratSimTotal/simTotal
+    else: return ratSimTotal/simTotal
