@@ -77,7 +77,7 @@ def svdEst(dataMat, user, simMeas, item):
     Sig4 = mat(eye(4)*Sigma[:4])
     xformedItems = dataMat.T * U[:,:4] * Sig4.I
     for j in range(n):
-        user = dataMat[user, j]
+        userRating = dataMat[user, j]
         if userRating == 0 or j==item: continue
         similarity = simMeas(xformedItems[item,:].T, xformedItems[j, :].T)
         print('the %d and %d similarity is: %f' % (item, j, similarity))
